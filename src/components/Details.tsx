@@ -33,30 +33,32 @@ const Details = () => {
 
   return (
     <Container className="text-dark mt-2">
-      <Row className="justify-content-center">
-        <Col xs={12} md={10}>
-          <div className="bg-news">
-            <div>
-              <img src={newsList?.imageUrl} id="detail-img" alt="news" />
-            </div>
-            <div className="ml-2">
-              <h1>{newsList?.title}</h1>
-              <p>{newsList?.summary}</p>
-            </div>
-            <div className="ml-2">
-              <a href={newsList?.url}>See More at {newsList?.newsSite} !</a>
+      {newsList && (
+        <Row className="justify-content-center">
+          <Col xs={12} md={10}>
+            <div className="bg-news">
+              <div>
+                <img src={newsList?.imageUrl} id="detail-img" alt="news" />
+              </div>
+              <div className="ml-2">
+                <h1>{newsList?.title}</h1>
+                <p>{newsList?.summary}</p>
+              </div>
+              <div className="ml-2">
+                <a href={newsList?.url}>See More at {newsList?.newsSite} !</a>
 
-              <p className="pb-2">
-                Published at: {newsList?.publishedAt.toString()}
-                {/* {format(
-                  parseISO(newsList.publishedAt.toString()),
-                  "dd.MM.yyyy"
-                )} */}
-              </p>
+                <p className="pb-2">
+                  Date published:{" "}
+                  {format(
+                    parseISO(newsList?.publishedAt.toString()),
+                    "dd.MM.yyyy"
+                  )}
+                </p>
+              </div>
             </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };
