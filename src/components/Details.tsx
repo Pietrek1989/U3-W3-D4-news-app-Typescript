@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import format from "date-fns/format";
-// import parseISO from "date-fns/parseISO";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import { NewsListInterface } from "../interfaces/interface";
 
 const Details = () => {
@@ -44,10 +44,14 @@ const Details = () => {
               <p>{newsList?.summary}</p>
             </div>
             <div className="ml-2">
-              <a href={newsList?.url}>See More!</a>
+              <a href={newsList?.url}>See More at {newsList?.newsSite} !</a>
 
               <p className="pb-2">
                 Published at: {newsList?.publishedAt.toString()}
+                {/* {format(
+                  parseISO(newsList.publishedAt.toString()),
+                  "dd.MM.yyyy"
+                )} */}
               </p>
             </div>
           </div>
@@ -56,8 +60,5 @@ const Details = () => {
     </Container>
   );
 };
-{
-  /* <p>Published at: {format(parseISO(published), " ccc  kk':'mm")}</p> */
-}
 
 export default Details;
